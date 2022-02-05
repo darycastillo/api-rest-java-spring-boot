@@ -17,8 +17,8 @@ public class MunicipioModel {
 
     private String descripcion;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    // @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    // @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "departamento_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore

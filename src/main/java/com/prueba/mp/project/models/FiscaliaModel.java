@@ -2,6 +2,11 @@ package com.prueba.mp.project.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "fiscalia")
 public class FiscaliaModel {
@@ -11,12 +16,24 @@ public class FiscaliaModel {
     @Column(unique = true, nullable = false, name = "fiscalia_id")
     private Long id;
 
-    private Integer departamento;
+    // private Integer departamento;
     private String descripcion;
     private String direccion;
     private Integer estado;
-    private Integer municipio;
+    // private Integer municipio;
     private String nombre;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "departamento_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private DepartamentoModel departamento;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "municipio_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private MunicipioModel municipio;
 
     public Long getid() {
         return id;
@@ -34,11 +51,11 @@ public class FiscaliaModel {
         return nombre;
     }
 
-    public Integer getMunicipio() {
+    public MunicipioModel getMunicipio() {
         return municipio;
     }
 
-    public Integer getDepartamento() {
+    public DepartamentoModel getDepartamento() {
         return departamento;
     }
 
@@ -54,11 +71,11 @@ public class FiscaliaModel {
         this.id = id;
     }
 
-    public void setMunicipio(Integer municipio) {
+    public void setMunicipio(MunicipioModel municipio) {
         this.municipio = municipio;
     }
 
-    public void setDepartamento(Integer departamento) {
+    public void setDepartamento(DepartamentoModel departamento) {
         this.departamento = departamento;
     }
 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import com.prueba.mp.project.models.FiscaliaModel;
+import com.prueba.mp.project.models.postModels.FiscaliaPostModel;
 import com.prueba.mp.project.services.FiscaliaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class FiscaliaController {
     }
 
     @PostMapping
-    public FiscaliaModel postAndUpdate(@RequestBody FiscaliaModel fiscalia) {
+    public FiscaliaModel postAndUpdate(@RequestBody FiscaliaPostModel fiscalia) {
         return this.fiscaliaService.postAndUpdate(fiscalia);
     }
 
