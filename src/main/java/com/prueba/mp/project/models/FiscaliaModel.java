@@ -2,37 +2,23 @@ package com.prueba.mp.project.models;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 @Entity
 @Table(name = "fiscalia")
 public class FiscaliaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false, name = "fiscalia_id")
     private Long id;
 
-    // private Integer departamento;
     private String descripcion;
     private String direccion;
     private Integer estado;
-    // private Integer municipio;
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "departamento_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @ManyToOne
     private DepartamentoModel departamento;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "municipio_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    @ManyToOne
     private MunicipioModel municipio;
 
     public Long getid() {
@@ -51,14 +37,6 @@ public class FiscaliaModel {
         return nombre;
     }
 
-    public MunicipioModel getMunicipio() {
-        return municipio;
-    }
-
-    public DepartamentoModel getDepartamento() {
-        return departamento;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -69,14 +47,6 @@ public class FiscaliaModel {
 
     public void setid(Long id) {
         this.id = id;
-    }
-
-    public void setMunicipio(MunicipioModel municipio) {
-        this.municipio = municipio;
-    }
-
-    public void setDepartamento(DepartamentoModel departamento) {
-        this.departamento = departamento;
     }
 
     public void setDescripcion(String descripcion) {
@@ -91,4 +61,19 @@ public class FiscaliaModel {
         this.nombre = nombre;
     }
 
+    public DepartamentoModel getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(DepartamentoModel departamento) {
+        this.departamento = departamento;
+    }
+
+    public MunicipioModel getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(MunicipioModel municipio) {
+        this.municipio = municipio;
+    }
 }

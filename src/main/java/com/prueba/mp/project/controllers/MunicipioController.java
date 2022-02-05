@@ -4,7 +4,6 @@ package com.prueba.mp.project.controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.prueba.mp.project.models.DepartamentoModel;
 import com.prueba.mp.project.models.MunicipioModel;
 import com.prueba.mp.project.models.postModels.MunicipioPostModel;
 import com.prueba.mp.project.services.DepartamentoService;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// @CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/municipio")
 public class MunicipioController {
