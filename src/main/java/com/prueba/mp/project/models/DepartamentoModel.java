@@ -35,7 +35,8 @@ import javax.persistence.*;
 public class DepartamentoModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "departamento_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false, name = "departamento_id")
     private long id;
     private String descripcion;
 

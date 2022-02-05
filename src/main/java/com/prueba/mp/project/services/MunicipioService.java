@@ -3,8 +3,8 @@ package com.prueba.mp.project.services;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.prueba.mp.project.models.DepartamentoModel;
 import com.prueba.mp.project.models.MunicipioModel;
+import com.prueba.mp.project.models.postModels.MunicipioPostModel;
 import com.prueba.mp.project.repositories.DepartamentoRepository;
 import com.prueba.mp.project.repositories.MunicipioRepository;
 
@@ -23,12 +23,14 @@ public class MunicipioService {
         return (ArrayList<MunicipioModel>) this.municipioRepository.findAll();
     }
 
-    public MunicipioModel postAndUpdate(MunicipioModel Municipio) {
-        System.out.println(Municipio);
-        // Optional<DepartamentoModel> departamento =
-        // departamentoRepository.findById(departamento_id);
-        // Municipio.setDepartamento(departamento);
-        return this.municipioRepository.save(Municipio);
+    public MunicipioModel postAndUpdate(MunicipioPostModel municipioPost) {
+        MunicipioModel municipioModel = new MunicipioModel();
+        municipioModel.setDescripcion(municipioPost.getDescripcion());
+
+        return departamentoRepository.findById(municipioPost.getDepartamento_id()).map(departamento -> {
+            municipioModel.setDepartamento(departamento);
+            return this.municipioRepository.save(municipioModel);
+        }).orElseThrow();
     }
 
     public Optional<MunicipioModel> getById(Long id) {

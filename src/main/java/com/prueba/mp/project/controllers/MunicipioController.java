@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.prueba.mp.project.models.DepartamentoModel;
 import com.prueba.mp.project.models.MunicipioModel;
+import com.prueba.mp.project.models.postModels.MunicipioPostModel;
 import com.prueba.mp.project.services.DepartamentoService;
 import com.prueba.mp.project.services.MunicipioService;
 
@@ -33,9 +34,9 @@ public class MunicipioController {
         return this.municipioService.getAll();
     }
 
-    @PostMapping
-    public MunicipioModel postAndUpdate(@RequestBody MunicipioModel municipio) {
-        return this.municipioService.postAndUpdate(municipio);
+    @PostMapping()
+    public MunicipioModel postAndUpdate(@RequestBody MunicipioPostModel municipioPost) {
+        return this.municipioService.postAndUpdate(municipioPost);
     }
 
     @GetMapping(path = "/{id}")
