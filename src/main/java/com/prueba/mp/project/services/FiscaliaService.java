@@ -32,6 +32,8 @@ public class FiscaliaService {
     public FiscaliaModel postAndUpdate(FiscaliaPostModel fiscalia) {
 
         FiscaliaModel fiscaliaModel = new FiscaliaModel();
+
+        fiscaliaModel.setid(fiscalia.getId());
         fiscaliaModel.setNombre(fiscalia.getNombre());
         fiscaliaModel.setDescripcion(fiscalia.getDescripcion());
         fiscaliaModel.setDireccion(fiscalia.getDireccion());

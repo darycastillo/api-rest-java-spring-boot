@@ -8,9 +8,18 @@ public class FiscaliaPostModel {
     private String nombre;
     private Long departamento_id;
     private Long municipio_id;
+    private Long id;
 
     public Integer getEstado() {
         return estado;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getMunicipio_id() {
